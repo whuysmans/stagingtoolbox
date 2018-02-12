@@ -17,7 +17,7 @@
               <nuxt-link style="color: black;" to="/bibliografie">Bibliografie</nuxt-link>
             </div>
             <div class="navbar-item is-hoverable">
-              <a  style="color: black;" href="https://cipt.be/toolbox/topic/welkom-op-het-forum">Ideeënforum</a>
+              <a  style="color: black;" href="https://staging2.cipt.be/toolbox/topic/welkom-op-het-forum">Ideeënforum</a>
             </div>
             <div class="navbar-item is-hoverable">
               <a href="https://kdg.be" style="color: black;" class="logo-link">
