@@ -13,10 +13,9 @@ export default {
   components: {
     'nav-bar': Navbar
   },
-  asyncData ({store, params}) {
-    return {
-      title: 'Bibliografie',
-      biblio: store.getters.getBiblio[0]
+  computed: {
+    biblio () {
+      return this.$store.getters.getBiblio[0]
     }
   }
 }

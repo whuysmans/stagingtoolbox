@@ -26,12 +26,10 @@ export default {
     'aside-menu': Aside
   },
   middleware: ['check-auth', 'auth'],
-  asyncData ({store, params}) {
-    return {
-      fiche: store.getters.getInfoFiche(params.slug)[0]
-    }
-  },
   computed: {
+    fiche () {
+      return this.$store.getters.getInfoFiche(this.$route.params.slug)[0]
+    },
     backgroundColor () {
       return this.$store.getters.getClassSlug(this.fiche.Kernthemas.display)
     },
