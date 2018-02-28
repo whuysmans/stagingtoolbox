@@ -25,6 +25,7 @@ export default {
     'page-content': PageContent,
     'aside-menu': Aside
   },
+  middleware: ['check-auth', 'auth'],
   asyncData ({store, params}) {
     return {
       title: params.slug,

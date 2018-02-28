@@ -4,12 +4,12 @@ module.exports = {
 
   generate: {
     routes: function () {
-      return axios.get('https://cipt.be/toolbox/wp-json/toolbox/v1/infofiches')
-      .then((res) => {
-        return res.data.entries.map((fiche) => {
-          return '/' + fiche.Slug
+      return axios.get('https://staging2.cipt.be/toolbox/wp-json/toolbox/v1/infofiches')
+        .then((res) => {
+          return res.data.entries.map((fiche) => {
+            return '/' + fiche.Slug
+          })
         })
-      })
     }
   },
 
@@ -27,9 +27,6 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
-  },
-  router: {
-    middleware: 'auth'
   },
   /*
   ** Customize the progress bar color

@@ -12,7 +12,7 @@
             class="tag is-medium">{{ fiche.Titel }}
           </nuxt-link>
         </article>
-        <article v-for="thema in themas" class="box tile is-child" key="thema._id">
+        <article v-for="thema in themas" class="box tile is-child" :key="thema._id">
           <h3 class=""><i class="fa" :class="[thema.Icoon, 'tekst-' + thema.Slug]"></i> {{ thema.Titel }}</h3>
           <div v-html="thema.Content"></div>
           <a v-if="thema.ExtraContent" @click.prevent="showThemaNotification(thema._id)">Lees meer...</a>
@@ -22,7 +22,7 @@
             <div v-html="thema.ExtraContent"></div>
           </div>
           <div class="tags subcat-tags">
-            <a v-for="subcat in thema.Subcat" key="subcat._id" class="tag is-medium" :class="thema.Slug" href="" @click.prevent.stop="handleSubcatClick">
+            <a v-for="subcat in thema.Subcat" :key="subcat._id" class="tag is-medium" :class="thema.Slug" href="" @click.prevent.stop="handleSubcatClick">
               {{ subcat.display }}
             </a>
           </div>

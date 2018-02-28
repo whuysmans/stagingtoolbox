@@ -39,8 +39,6 @@
   </section>
 </template>
 <script>
-import axios from 'axios'
-import { mapActions } from 'vuex'
 export default {
   data () {
     return {
@@ -49,18 +47,8 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
-      'setAuthenticatedState'
-    ]),
     submit () {
-      axios.post('https://cipt.be/toolbox/wp-json/toolbox/v1/login', {
-        password: this.password
-      }).then((resp) => {
-        if (resp.data && resp.data !== '') {
-          this.success = true
-          this.setAuthenticatedState(true).then(() => this.$router.replace({ path: '/' }))
-        }
-      })
+      this.$emit('loginSubmit', this.password)
     },
     cancel (event) {
       this.$refs['pw-login'].value = ''

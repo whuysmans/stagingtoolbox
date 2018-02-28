@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import Cookie from 'js-cookie'
 
 Vue.use(Vuex)
 
@@ -15,8 +16,7 @@ const createStore = () => {
       activeNav: '',
       classSlug: {},
       activeState: '',
-      token: '',
-      isAuthenticated: false
+      token: null
     },
 
     mutations: {
@@ -55,9 +55,6 @@ const createStore = () => {
       SET_ACTIVE_STATE (state, active) {
         state.activeState = active
       },
-      SET_AUTHENTICATED_STATE (state, auth) {
-        state.isAuthenticated = auth
-      },
       SET_TOKEN (state, token) {
         state.token = token
       }
@@ -85,17 +82,39 @@ const createStore = () => {
       setActiveState ({commit}, active) {
         commit('SET_ACTIVE_STATE', active)
       },
-      setAuthenticatedState ({commit}, auth) {
-        commit('SET_AUTHENTICATED_STATE', auth)
-      },
       setToken ({commit}, token) {
         commit('SET_TOKEN', token)
+      },
+      authenticate (vueContext, token) {
+        vueContext.commit('SET_TOKEN', token)
+        if (process.client) {
+          localStorage.setItem('token', token)
+        }
+        Cookie.set('token', token)
+      },
+      initAuth (vueContext, req) {
+        let token = null
+        if (req) {
+          console.log('there was a request')
+          if (!req.headers.cookie) {
+            return
+          }
+          const jwtCookie = req.headers.cookie.split(';').find(c => c.trim().startsWith('token='))
+          if (!jwtCookie) {
+            return
+          }
+          token = jwtCookie.split('=')[1]
+        } else if (process.client) {
+          console.log('we are on the client')
+          token = localStorage.getItem('token')
+        }
+        vueContext.commit('SET_TOKEN', token)
       }
     },
 
     getters: {
       isAuthenticated (state) {
-        return state.isAuthenticated
+        return state.token !== null
       },
       getBiblio (state) {
         return state.biblio

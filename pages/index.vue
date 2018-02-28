@@ -28,7 +28,6 @@
         </div>
       </section>
     </div>
-    <login v-else></login>
   </div>
 </template>
 
@@ -42,6 +41,7 @@ export default {
     'nav-bar': Navbar,
     'login': Login
   },
+  middleware: ['check-auth', 'auth'],
   data () {
     return {
     }
@@ -56,14 +56,7 @@ export default {
   },
   computed: {
     isAuthenticated () {
-      if (this.$route.query.token) {
-        this.$store.dispatch('setAuthenticatedState', {
-          auth: true
-        })
-        return true
-      } else {
-        return this.$store.getters.isAuthenticated
-      }
+      return this.$store.getters.isAuthenticated
     }
   }
 }
