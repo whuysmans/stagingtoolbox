@@ -42,21 +42,18 @@ export default {
     'login': Login
   },
   middleware: ['check-auth', 'auth'],
-  data () {
-    return {
-    }
-  },
-  asyncData ({store, params, route, userAgent}) {
-    return {
-      themas: store.getters.getKernThemas,
-      homeInfo: store.getters.getHomeInfo[0],
-      fiches: store.getters.getInfoFiches,
-      activeFilter: store.getters.getActiveFilter
-    }
-  },
   computed: {
     isAuthenticated () {
       return this.$store.getters.isAuthenticated
+    },
+    themas () {
+      return this.$store.getters.getKernThemas
+    },
+    homeInfo () {
+      return this.$store.getters.getHomeInfo[0]
+    },
+    fiches () {
+      return this.$store.getters.getInfoFiches
     }
   }
 }
