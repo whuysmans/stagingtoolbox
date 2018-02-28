@@ -42,6 +42,10 @@ export default {
     'login': Login
   },
   middleware: ['check-auth', 'auth'],
+  data () {
+    return {
+    }
+  },
   computed: {
     isAuthenticated () {
       return this.$store.getters.isAuthenticated
