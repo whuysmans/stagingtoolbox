@@ -12,8 +12,9 @@ module.exports = {
         })
     }
   },
-
-  debug: true,
+  router: {
+    middleware: 'check-auth'
+  },
   /*
   ** Headers of the page
   */
