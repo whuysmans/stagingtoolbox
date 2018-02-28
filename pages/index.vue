@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="isAuthenticated" class="home">
+    <div class="home">
       <nav-bar></nav-bar>
       <section class="hero home-hero">
         <div class="hero-body">
