@@ -41,6 +41,7 @@ export default {
     'nav-bar': Navbar,
     'login': Login
   },
+  middleware: ['check-auth', 'auth'],
   data () {
     return {
     }
