@@ -1,4 +1,5 @@
 export default function (context) {
+  console.log(context)
   if (process.server && !context.req) {
     return
   }
