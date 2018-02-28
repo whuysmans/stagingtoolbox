@@ -10,7 +10,6 @@ export default {
   components: {
     'login': Login
   },
-  middleware: ['check-auth', 'auth'],
   methods: {
     handleSubmit (password) {
       axios.post('https://us-central1-fev-auth.cloudfunctions.net/authenticateMe', {
