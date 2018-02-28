@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="home">
+    <div v-if="isAuthenticated" class="home">
       <nav-bar></nav-bar>
       <section class="hero home-hero">
         <div class="hero-body">
@@ -41,7 +41,6 @@ export default {
     'nav-bar': Navbar,
     'login': Login
   },
-  middleware: ['check-auth', 'auth'],
   data () {
     return {
     }
@@ -55,6 +54,9 @@ export default {
     },
     fiches () {
       return this.$store.getters.getInfoFiches
+    },
+    isAuthenticated () {
+      return this.$store.getters.isAuthenticated
     }
   }
 }

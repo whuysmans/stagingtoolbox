@@ -25,7 +25,6 @@ export default {
     'page-content': PageContent,
     'aside-menu': Aside
   },
-  middleware: ['check-auth', 'auth'],
   computed: {
     fiche () {
       return this.$store.getters.getInfoFiche(this.$route.params.slug)[0]
