@@ -47,14 +47,11 @@ export default {
     }
   },
   computed: {
-    isAuthenticated () {
-      return this.$store.getters.isAuthenticated
-    },
     themas () {
       return this.$store.getters.getKernThemas
     },
     homeInfo () {
-      return this.$store.getters.getHomeInfo[0]
+      return this.$store.getters.getHomeInfo
     },
     fiches () {
       return this.$store.getters.getInfoFiches

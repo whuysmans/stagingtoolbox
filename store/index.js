@@ -68,9 +68,9 @@ const createStore = () => {
           axios.get('https://staging2.cipt.be/toolbox/wp-json/toolbox/v1/homeinfo'),
           axios.get('https://staging2.cipt.be/toolbox/wp-json/toolbox/v1/bibliografie')
         ])
-        commit('LOAD_INFO_FICHES', results[0].data.entries)
         commit('LOAD_KERN_THEMAS', results[1].data.entries)
-        commit('LOAD_HOME_INFO', results[2].data.entries)
+        commit('LOAD_HOME_INFO', results[2].data.entries[0])
+        commit('LOAD_INFO_FICHES', results[0].data.entries)
         commit('LOAD_BIBLIO', results[3].data.entries)
       },
       setActiveFilter ({commit}, filter) {
