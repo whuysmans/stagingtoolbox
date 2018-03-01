@@ -28,6 +28,7 @@
         </div>
       </section>
     </div>
+    <login v-else @loginSubmit="handleSubmit" />
   </div>
 </template>
 
@@ -35,6 +36,7 @@
 import Filter from '../components/Filter'
 import Navbar from '../components/Navbar'
 import Login from '../components/Login'
+import axios from 'axios'
 export default {
   components: {
     'toolbox-filter': Filter,
@@ -58,6 +60,22 @@ export default {
     },
     isAuthenticated () {
       return this.$store.getters.isAuthenticated
+    }
+  },
+  methods: {
+    handleSubmit (password) {
+      axios.post('https://us-central1-fev-auth.cloudfunctions.net/authenticateMe', {
+        data: {
+          jwt: password
+        },
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then((result) => {
+        this.$store.dispatch('authenticate', result.data).then(() => {
+          this.$router.push('/')
+        })
+      }).catch((error) => console.log(error))
     }
   }
 }
