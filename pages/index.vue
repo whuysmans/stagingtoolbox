@@ -28,7 +28,9 @@
         </div>
       </section>
     </div>
-    <login v-else @loginSubmit="handleSubmit" />
+    <div v-else>
+      <login @loginSubmit="handleSubmit" />
+    </div>
   </div>
 </template>
 
