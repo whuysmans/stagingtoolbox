@@ -33,6 +33,9 @@ module.exports = {
   /*
   ** Build configuration
   */
+  plugins: [
+    {src: '~/plugins/token.js'}
+  ],
   build: {
     /*
     ** Run ESLint on save

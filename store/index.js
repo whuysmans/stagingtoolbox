@@ -95,7 +95,6 @@ const createStore = () => {
       initAuth (vueContext, req) {
         let token = null
         if (req) {
-          console.log('there was a request')
           if (!req.headers.cookie) {
             return
           }
@@ -105,7 +104,6 @@ const createStore = () => {
           }
           token = jwtCookie.split('=')[1]
         } else if (process.client) {
-          console.log('we are on the client')
           token = localStorage.getItem('token')
         }
         vueContext.commit('SET_TOKEN', token)
