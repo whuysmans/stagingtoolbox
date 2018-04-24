@@ -37,7 +37,7 @@ module.exports = {
     {src: '~/plugins/token.js'}
   ],
   modules: [
-    '@nuxtjs/pw@a'
+    '@nuxtjs/pwa'
   ],
   build: {
     /*
