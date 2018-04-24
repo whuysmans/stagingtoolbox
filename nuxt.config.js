@@ -36,6 +36,9 @@ module.exports = {
   plugins: [
     {src: '~/plugins/token.js'}
   ],
+  modules: [
+    '@nuxtjs/pw@a'
+  ],
   build: {
     /*
     ** Run ESLint on save
